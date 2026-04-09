@@ -1,13 +1,8 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
-
 public class BankSystem {
-    LinkedList<BankAccount> accounts = new LinkedList<>();
-    Stack<String> history = new Stack<>();
-    Queue<BankAccount> requests = new LinkedList<>();
-    Queue<String> billQueue = new LinkedList<>();
-
+    Linklist4 accounts = new Linklist4();
+    java.util.Stack<String> history = new java.util.Stack<>();
+    CustomQueue requests = new CustomQueue();
+    CustomQueueString billQueue = new CustomQueueString();
 
     public void addAccount(BankAccount acc) {
         accounts.add(acc);
@@ -15,12 +10,7 @@ public class BankSystem {
     }
 
     public BankAccount findAccount(String username) {
-        for (BankAccount acc : accounts) {
-            if (acc.username.equalsIgnoreCase(username)) {
-                return acc;
-            }
-        }
-        return null;
+        return accounts.find(username);
     }
 
     public void submitRequest(BankAccount acc) {
@@ -67,9 +57,7 @@ public class BankSystem {
         if (requests.isEmpty()) {
             System.out.println("No account requests.");
         } else {
-            for (BankAccount acc : requests) {
-                System.out.println(acc);
-            }
+            requests.printAll();
         }
     }
 
@@ -87,9 +75,15 @@ public class BankSystem {
         if (billQueue.isEmpty()) {
             System.out.println("No bills in queue.");
         } else {
-            for (String bill : billQueue) {
-                System.out.println(bill);
-            }
+            billQueue.printAll();
+        }
+    }
+
+    public void showAllAccounts() {
+        if (accounts.isEmpty()) {
+            System.out.println("No accounts.");
+        } else {
+            accounts.printAll();
         }
     }
 }

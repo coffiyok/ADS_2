@@ -44,9 +44,7 @@ public class Main {
                         break;
 
                     case 2:
-                        for (BankAccount acc : bank.accounts) {
-                            System.out.println(acc);
-                        }
+                        bank.showAllAccounts();
                         break;
 
                     case 3:
@@ -152,5 +150,6 @@ public class Main {
                 continue;
             }
         }
+        sc.close();
     }
 }
